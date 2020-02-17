@@ -1,0 +1,47 @@
+$formMarginTop: 40px;
+$formWidth: 300px;
+
+.aaw-login {
+  overflow: auto;
+}
+
+.aaw-login-card {
+  max-width: $formWidth;
+  margin: $formMarginTop auto;
+}
+
+.aaw-login-card .logo {
+  height: 200px;
+  width: auto;
+  display: block;
+  margin: 10px auto;
+}
+
+.aaw-login-card .mat-form-field {
+  margin-top: 15px;
+  width: 280px !important;
+}
+
+.aaw-login-card .aaw-remember-me {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.aaw-login-card .aaw-submit {
+  text-align: center;
+  width: 100%;
+  margin-top: 16px !important;
+}
+
+.aaw-login-card .indicator {
+  cursor: pointer;
+}
+
+.aaw-login-card mat-card-actions {
+  text-align: center;
+}
+
+.aaw-vspace {
+  width: 100%;
+  height: 5px;
+}

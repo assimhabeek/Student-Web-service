@@ -1,0 +1,36 @@
+<div class="container">
+  <mat-toolbar color="primary" class="mat-elevation-z8">
+    Delibration
+  </mat-toolbar>
+  <mat-card class="mat-elevation-z8">
+    <h1 *ngIf="deliberation==null" class="mat-display-3 big-title" fxFlex> Deliberations is not yet published !</h1>
+    <div *ngIf="deliberation" class="full">
+      <div class="half">
+        <h1>Unit 1 : </h1>
+        <h1>Unit 2 : </h1>
+        <h1>Unit 3 : </h1>
+      </div>
+      <div class="boder">
+        <h1>{{deliberation.unit1}}</h1>
+        <h1>{{deliberation.unit2}}</h1>
+        <h1>{{deliberation.unit3}}</h1>
+      </div>
+      <div class="half">
+        <h1>Avg : </h1>
+      </div>
+      <div class="half">
+        <h1>{{ round((deliberation.unit1 + deliberation.unit2 + deliberation.unit3) / 3)}}</h1>
+      </div>
+      <div class="full center">
+        <form (ngSubmit)="complain(deliberation)">
+          <mat-form-field class="half">
+            <textarea matInput name="complain" [(ngModel)]="deliberation.complain">
+                </textarea>
+          </mat-form-field>
+          &nbsp;
+          <button mat-flat-button color="primary">complain</button>
+        </form>
+      </div>
+    </div>
+  </mat-card>
+</div>

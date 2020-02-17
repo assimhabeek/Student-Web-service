@@ -1,0 +1,151 @@
+
+
+    // requesting students
+    Get   /admin/students
+
+    // requesting student with id : ${req.params.id}
+    Get   /admin/students/:id
+
+    // creating student : ${req.body}
+    Post   /admin/students
+
+    // editing student with id : ${req.body.id}
+    Put   /admin/students
+
+    // deleting student with id : ${req.params.id}
+    Delete   /admin/students/:id
+
+    // requesting teachers
+    Get   /admin/teachers
+
+    // requesting teacher with id : ${req.params.id}
+    Get   /admin/teachers/:id
+
+    // creating teacher : ${req.body}
+    Post   /admin/teachers
+
+    // editing teacher with id : ${req.body.id}
+    Put   /admin/teachers
+
+    // deleting teacher with id : ${req.params.id}
+    Delete   /admin/teachers/:id
+
+    // requesting admins
+    Get   /admin/admins
+
+    // requesting admin with id : ${req.params.id}
+    Get   /admin/admins/:id
+
+    // creating admin : ${req.body}
+    Post   /admin/admins
+
+    // editing admin with id : ${req.body.id}
+    Put   /admin/admins
+
+    // deleting admin with id : ${req.params.id}
+    Delete   /admin/admins/:id
+
+
+
+    // requesting courses
+    Get   /admin/courses
+
+    // requesting course with id : ${req.params.id}
+    Get   /admin/courses/:id
+
+    // creating course : ${req.body}
+    Post   /admin/courses
+
+    // editing course with id : ${req.body.id}
+    Put   /admin/courses
+
+    // deleting course with id : ${req.params.id}
+    Delete   /admin/courses/:id
+
+
+    // requesting marks
+    Get   /admin/marks
+
+    // requesting mark with id : ${req.params.id}
+    Get   /admin/marks/:id
+
+    // creating mark : ${req.body}
+    Post   /admin/marks
+
+    // editing mark with id : ${req.body.id}
+    Put   /admin/marks
+
+    // deleting mark with id : ${req.params.id}
+    Delete   /admin/marks/:id
+
+
+    // requesting deliberations
+    Get   /admin/deliberations
+
+    // requesting deliberation with id : ${req.params.id}
+    Get   /admin/deliberations/:id
+
+    // creating deliberation : ${req.body}
+    Post   /admin/deliberations
+
+    // editing deliberation with id : ${req.body.id}
+    Put   /admin/deliberations
+
+    // deleting deliberation with id : ${req.params.id}
+    Delete   /admin/deliberations/:id
+
+    // auto gen deliberations : empty body
+    Post   /admin/deliberations/auto
+
+
+    // requesting courses
+    Get    /teacher/courses'
+
+    // requesting course with id : ${req.params.id}
+    Get    /teacher/courses/:id'
+
+    // requesting students
+    Get    /teacher/students'
+
+    // requesting student with id : ${req.params.id}
+    Get    /teacher/students/:id'
+
+
+    // requesting marks
+    Get    /teacher/marks'
+
+    // requesting mark with id : ${req.params.id}
+    Get    /teacher/marks/:id'
+
+    // creating mark : ${req.body}
+    Post    /teacher/marks'
+
+    // editing mark with id : ${req.body.id}
+    Put    /teacher/marks'
+
+    // deleting mark with id : ${req.params.id}
+    Delete    /teacher/marks/:id'
+
+    // auto gen marks : ${req.body}
+    Post    /teacher/marks/auto'
+
+
+    // requesting marks
+    Get    /student/marks'    
+
+    // requesting mark with id : ${req.params.id}
+    Get    /student/marks/:id'    
+
+    // adding complain for a mark : ${req.body}
+    // it takes the same object struct of mark
+    Put    /student/marks/complaint'    
+
+    // requesting deliberations
+    Get    /student/deliberations'    
+
+    // requesting deliberations with id : ${req.params.id}
+    Get    /student/deliberations/:id'    
+
+    // adding complain for a deliberations : ${req.body}
+    // it takes the same object struct of deliberations
+    Put    /student/deliberations/complaint'    

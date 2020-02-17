@@ -1,0 +1,71 @@
+<div class="form">
+  <mat-toolbar color="primary" class="mat-elevation-z8">
+    Courses
+  </mat-toolbar>
+  <div>
+    <form [formGroup]="coursesForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-card class="shipping-card">
+        <mat-card-content>
+          <div class="row">
+
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Teacher" formControlName="teacher" [matAutocomplete]="teacherAutocomplete">
+                <mat-autocomplete #teacherAutocomplete="matAutocomplete" [displayWith]="displayTeacherFn">
+                  <mat-option *ngFor="let teacher of filteredTeachers | async" [value]="teacher">
+                    <div>{{teacher.fullName}}</div>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="coursesForm.controls['teacher'].hasError('required')">
+                  teacher is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Abb" formControlName="abb">
+                <mat-error *ngIf="coursesForm.controls['abb'].hasError('required')">
+                  Abb is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Name" formControlName="name">
+                <mat-error *ngIf="coursesForm.controls['name'].hasError('required')">
+                  Name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <textarea matInput  placeholder="Description" formControlName="description"></textarea>
+                <mat-error *ngIf="coursesForm.controls['description'].hasError('required')">
+                  Description is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="number" placeholder="Unit" formControlName="unit">
+                <mat-error *ngIf="coursesForm.controls['unit'].hasError('required')">
+                  Unit is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

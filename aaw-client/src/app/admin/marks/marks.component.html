@@ -1,0 +1,63 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  Marks
+</mat-toolbar>
+<div>
+  <div class="left">
+
+    <a mat-flat-button color="primary" [routerLink]="'/admin/marks-form/0'">Add</a>
+    &nbsp;
+    <a [disabled]="!selectedItem" mat-flat-button color="accent"
+      [routerLink]="'/admin/marks-form/'+selectedItem?.id">Edit</a>
+    &nbsp;
+    <button [disabled]="!selectedItem" mat-flat-button color="warn" (click)="remove(selectedItem)">Delete</button>
+    &nbsp;
+    <mat-form-field>
+      <input matInput #search placeholder="search">
+    </mat-form-field>
+  </div>
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+    <!-- Mark Column -->
+    <ng-container matColumnDef="mark">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Mark</th>
+      <td mat-cell *matCellDef="let row">{{row.mark}}</td>
+    </ng-container>
+
+    <!-- Course abb Column -->
+    <ng-container matColumnDef="course">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
+      <td mat-cell *matCellDef="let row">{{row.course.abb}}</td>
+    </ng-container>
+
+    <!-- Student Column -->
+    <ng-container matColumnDef="student">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Student</th>
+      <td mat-cell *matCellDef="let row">{{row.student.fullName}}</td>
+    </ng-container>
+
+    <!-- Complain Column -->
+    <ng-container matColumnDef="complain">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Complain</th>
+      <td mat-cell *matCellDef="let row">
+        {{row.complain}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isComplainHandled">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Complain Handled</th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox [disabled]="true" [checked]="row.isComplainHandled" color="primary">
+
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"  (click)="selectedItem=row"
+      [class.primary-background-2]="selectedItem==row"></tr>
+  </table>
+
+  <mat-paginator #paginator [length]="dataSource?.total" [pageIndex]="0" [color]="'primary'"
+    [pageSize]="dataSource?.pageSize" [hidePageSize]="true">
+  </mat-paginator>
+</div>

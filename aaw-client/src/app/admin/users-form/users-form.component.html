@@ -1,0 +1,72 @@
+<div class="form">
+  <mat-toolbar color="primary" class="mat-elevation-z8">
+    Users
+  </mat-toolbar>
+
+  <div>
+    <form [formGroup]="usersForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-card class="shipping-card">
+        <mat-card-content>
+          <div class="row" formGroupName="name">
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Last name" formControlName="last">
+                <mat-error *ngIf="usersForm.controls['name'].controls['last'].hasError('required')">
+                  Last name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="text" placeholder="First name" formControlName="first">
+                <mat-error *ngIf="usersForm.controls['name'].controls['first'].hasError('required')">
+                  First name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="text" placeholder="Username" formControlName="username">
+                <mat-error *ngIf="usersForm.controls['username'].hasError('required')">
+                  Username is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="password" placeholder="Password" formControlName="password">
+                <mat-error *ngIf="usersForm.controls['password'].hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <mat-select formControlName="type" placeholder="User Type">
+                  <mat-option value="student">Student</mat-option>
+                  <mat-option value="teacher">Teacher</mat-option>
+                  <mat-option value="admin">Admin</mat-option>
+                </mat-select>
+                <mat-error *ngIf="usersForm.controls['type'].hasError('required')">
+                  User type is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

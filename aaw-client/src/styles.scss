@@ -1,0 +1,59 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+
+$primary: mat-palette($mat-green,600);
+$accent:  mat-palette($mat-blue-grey);
+$theme: mat-light-theme($primary, $accent);
+
+.primary {
+    color: mat-color($primary);
+}
+
+.accent {
+    color: mat-color($accent);
+}
+
+.primary-background {
+    background-color:  mat-color($primary) !important;
+}
+
+.primary-background-2 {
+  background-color:  mat-color($primary) !important;
+  color:  mat-color($primary,'default-contrast') !important;
+}
+
+.accent-background {
+    background-color:  mat-color($accent) !important;
+    .mat-list-item,
+    .mat-subheader{
+        color: mat-color($accent,default-contrast) !important;
+    }
+}
+
+html,body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.aaw-toolbar-logo{
+    height: 100%;
+    width: auto;
+    margin: auto;
+}
+.vspace{
+    flex: 1 1 auto;
+}
+.left{
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+.center {
+  text-align: center;
+}
+@include angular-material-theme($theme);
+

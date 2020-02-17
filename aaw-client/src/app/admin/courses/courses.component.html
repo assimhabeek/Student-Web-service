@@ -1,0 +1,74 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  Courses
+</mat-toolbar>
+<div>
+  <div class="left">
+
+    <a mat-flat-button color="primary" [routerLink]="'/admin/courses-form/0'">Add</a>
+    &nbsp;
+    <a [disabled]="!selectedItem" mat-flat-button color="accent"
+      [routerLink]="'/admin/courses-form/'+selectedItem?.id">Edit</a>
+    &nbsp;
+    <button [disabled]="!selectedItem" mat-flat-button color="warn" (click)="remove(selectedItem)">Delete</button>
+    &nbsp;
+    <mat-form-field>
+      <input matInput #search placeholder="search">
+    </mat-form-field>
+  </div>
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+
+    <!-- Abb Column -->
+    <ng-container matColumnDef="abb">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Abb</th>
+      <td mat-cell *matCellDef="let row">{{row.abb}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+      <td mat-cell *matCellDef="let row">{{row.description}}</td>
+    </ng-container>
+
+    <!-- Unit Column -->
+    <ng-container matColumnDef="unit">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Unit</th>
+      <td mat-cell *matCellDef="let row">{{row.unit}}</td>
+    </ng-container>
+
+    <!-- Teacher Column -->
+    <ng-container matColumnDef="teacher">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Teacher</th>
+      <td mat-cell *matCellDef="let row">{{row.teacher.fullName}}</td>
+    </ng-container>
+
+    <!-- Complain Column -->
+    <ng-container matColumnDef="complain">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Complain</th>
+      <td mat-cell *matCellDef="let row">
+        {{row.complain}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="isComplainHandled">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Complain Handled</th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox [disabled]="true" [checked]="row.isComplainHandled" color="primary">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedItem=row"
+      [class.primary-background-2]="selectedItem==row"></tr>
+  </table>
+
+  <mat-paginator #paginator [length]="dataSource?.total" [pageIndex]="0" [color]="'primary'"
+    [pageSize]="dataSource?.pageSize" [hidePageSize]="true">
+  </mat-paginator>
+</div>

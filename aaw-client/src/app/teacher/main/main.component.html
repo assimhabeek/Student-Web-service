@@ -1,0 +1,34 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav mat-elevation-z16  accent-background" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+
+    <mat-toolbar class="primary-background">
+      <img src="assets/logo.png" class="aaw-toolbar-logo" />
+    </mat-toolbar>
+    <mat-nav-list>
+      <h1 mat-subheader>Menu</h1>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/teacher/marks">
+        <h5>
+          <mat-icon inline="true">filter_1</mat-icon> Marks
+        </h5>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="accent" class="mat-elevation-z8">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="vspace"></span>
+      <app-user-profile></app-user-profile>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

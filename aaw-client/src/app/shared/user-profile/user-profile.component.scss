@@ -1,0 +1,19 @@
+$user-profile-width: 192px;
+$user-profile-padding: 24px;
+
+
+.user-profile {
+    width: $user-profile-width;
+    padding: $user-profile-padding;
+    text-align: center;
+    mat-icon{
+        font-size: 126px;
+    }
+    h4,h5{
+        margin: 3px 0px;
+    }
+}
+
+.logout-button{
+    width: 100%;
+}

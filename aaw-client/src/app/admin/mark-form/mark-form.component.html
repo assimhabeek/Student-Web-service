@@ -1,0 +1,56 @@
+<div class="form">
+  <mat-toolbar color="primary" class="mat-elevation-z8">
+    Marks
+  </mat-toolbar>
+  <div>
+    <form [formGroup]="marksForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-card class="shipping-card">
+        <mat-card-content>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Course" formControlName="course" [matAutocomplete]="courseAutocomplete">
+                <mat-autocomplete #courseAutocomplete="matAutocomplete" [displayWith]="displayCourseFn">
+                  <mat-option *ngFor="let course of filteredCourses | async" [value]="course">
+                    <div>{{course.abb}}</div>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="marksForm.controls['course'].hasError('required')">
+                  Course is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Student" formControlName="student" [matAutocomplete]="studentAutocomplete">
+                <mat-autocomplete #studentAutocomplete="matAutocomplete" [displayWith]="displayStudentFn">
+                  <mat-option *ngFor="let student of filteredStudents | async" [value]="student">
+                    <div>{{student.fullName}}</div>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="marksForm.controls['student'].hasError('required')">
+                  Student is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="number" placeholder="Mark" formControlName="mark">
+                <mat-error *ngIf="marksForm.controls['mark'].hasError('required')">
+                  Mark is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="form">
+  <mat-toolbar color="primary" class="mat-elevation-z8">
+    Deliberations
+  </mat-toolbar>
+  <div>
+    <form [formGroup]="deliberationsForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-card class="shipping-card">
+        <mat-card-content>
+          <div class="row">
+
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Student" formControlName="student" [matAutocomplete]="studentAutocomplete">
+                <mat-autocomplete #studentAutocomplete="matAutocomplete" [displayWith]="displayStudentFn">
+                  <mat-option *ngFor="let student of filteredStudents | async" [value]="student">
+                    <div>{{student.fullName}}</div>
+                  </mat-option>
+                </mat-autocomplete>
+                <mat-error *ngIf="deliberationsForm.controls['student'].hasError('required')">
+                  Student is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="number" placeholder="Unit1" formControlName="unit1">
+                <mat-error *ngIf="deliberationsForm.controls['unit1'].hasError('required')">
+                  Unit1 is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="number" placeholder="Unit2" formControlName="unit2">
+                <mat-error *ngIf="deliberationsForm.controls['unit2'].hasError('required')">
+                  Unit2 is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="col">
+              <mat-form-field>
+                <input matInput type="number" placeholder="Unit3" formControlName="unit3">
+                <mat-error *ngIf="deliberationsForm.controls['unit3'].hasError('required')">
+                  Unit3 is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Submit</button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

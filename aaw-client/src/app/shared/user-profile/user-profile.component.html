@@ -1,0 +1,18 @@
+<button mat-icon-button [mat-menu-trigger-for]="userProfile" matTooltip="display profile" tabindex="-1">
+<mat-icon>account_circle</mat-icon>
+</button>
+
+<!-- TODO: replace use of `mat-menu` here with a custom overlay -->
+<mat-menu  #userProfile="matMenu" x-position="before">
+        <div *ngIf="user" class="user-profile">
+                <mat-icon class="accent" inline="true">account_circle</mat-icon>
+                <h4>{{ user.name.last  + ' '  + user.name.first }}</h4>
+                <h5 class="primary">{{ user.username }}</h5>
+        </div>
+        <div  mat-menu-item>
+                <button class="logout-button" 
+                 mat-flat-button 
+                 color="primary"
+                 (click)="logout()">Logout</button>
+        </div>
+</mat-menu>

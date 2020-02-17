@@ -1,0 +1,19 @@
+.full-width {
+  width: 100%;
+}
+
+.shipping-card {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 120px;
+  margin: 0;
+}
+
+.col{
+  width: 300px;
+}
+
+
+.col:last-child {
+  margin-right: 0;
+}
